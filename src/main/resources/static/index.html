@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <title>index</title>
+</head>
+<body>
+<p></p>
+<p></p>
+<div style="width: 1000px; margin: auto">
+    <div>
+        <h3>게시판</h3>
+    </div>
+    <div>
+        <form class="d-flex" style="margin-bottom: 10px;">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 830px;">
+            <button class="btn btn-outline-success" type="submit" style="margin-right: 10px">Search</button>
+            <button type="button" class="btn btn-primary" onclick=location.href='/create'>글 작성</button>
+        </form>
+    </div>
+    <table class="table table-striped table-bordered" >
+        <thead>
+        <tr>
+            <th scope="col">글 번호</th>
+            <th scope="col">제목</th>
+            <th scope="col">글 내용</th>
+            <th scope="col">작성날짜</th>
+            <th scope="col">작성자</th>
+            <th scope="col">조회수</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>스터디</td>
+            <td>오늘 시작했다</td>
+            <td>2024/03/21</td>
+            <td>안태현</td>
+            <td>0</td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" style="justify-content:center">
+        <div class="btn-group me" role="group" aria-label="First group">
+            <button type="button" class="btn btn-primary">◀</button>
+            <button type="button" class="btn btn-primary">1</button>
+            <button type="button" class="btn btn-primary">2</button>
+            <button type="button" class="btn btn-primary">3</button>
+            <button type="button" class="btn btn-primary">4</button>
+            <button type="button" class="btn btn-primary">▶</button>
+        </div>
+    </div>
+</div>
+</body>
+
+<script>
+    function insertBoard(){
+    }
+</script>
+</html>

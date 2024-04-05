@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/" xmlns="http://www.w3.org/1999/html" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <title>글 작성</title>
+</head>
+<body>
+    <div>
+        <form style="width: 1000px; margin: auto" action="/list/create" method="post">
+            <h3>글 작성</h3>
+            <div class="input-group mb-2">
+                <span class="input-group-text" id="board-title">글 제목</span>
+                <input type="text" class="form-control" name="title" placeholder="글 제목" aria-label="title" aria-describedby="board-title" th:value="${title}">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="board-text">글 내용</span>
+                <textarea type="text" class="form-control" name="contents" placeholder="글 내용" aria-label="text" aria-describedby="board-text" style="height: 300px" th:value="${contents}"></textarea>
+            </div>
+            <div style="float: right">
+                <button type="submit" class="btn btn-primary" style="width: 80px">글 작성</button>
+                <button type="button" class="btn btn-secondary" style="width: 80px" onclick=location.href='/list'>취소</button>
+            </div>
+        </form>
+    </div>
+</body>
+<script>
+    function test(){
+        console.log('test');
+    }
+</script>
+</html>
