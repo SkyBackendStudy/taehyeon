@@ -29,7 +29,6 @@ public class BoardController {
     @GetMapping("/list")
     public String list(Model model, @RequestParam(value="page", defaultValue="0") int page) {
         Page<Board> paging = boardService.getList(page);
-        System.out.println("test");
         model.addAttribute("allBoardList", paging);
         return "list";
     }
