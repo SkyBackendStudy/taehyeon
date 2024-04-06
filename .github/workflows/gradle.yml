@@ -61,7 +61,7 @@ jobs:
           host: ${{ secrets.HOST }}
           key: ${{ secrets.PRIVATE_KEY }}
           source: "deploy.sh"
-          target: "/home/ubuntu/ec2-user/cicd"
+          target: "/Users/antaehyeon/"
     - name: Execute deploy script
       uses: appleboy/ssh-action@master
       with:
