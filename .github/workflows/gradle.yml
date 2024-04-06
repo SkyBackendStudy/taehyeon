@@ -38,14 +38,37 @@ jobs:
 
     - name: Build with Gradle Wrapper
       run: ./gradlew build
-
-    - name: executing remote ssh commands using ssh key
-      uses: appleboy/ssh-action@v0.1.10
+      
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.PRIVATE_KEY }}
-        port: ${{ secrets.PORT }}
-        script: |
-          whoami
-          ls -al
+          name: cicdsample
+          path: build/libs/*.jar
+
+    - name: Copy jar file to remote
+      uses: appleboy/scp-action@master
+      with:
+          username: ec2-user
+          host: ${{ secrets.HOST }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          source: "./build/libs/*.jar"
+          target: "/home/ec2-user/cicd"
+          strip_components: 2
+    - name: Copy deploy script file to remote
+      uses: appleboy/scp-action@master
+      with:
+          username: ec2-user
+          host: ${{ secrets.HOST }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          source: "deploy.sh"
+          target: "/home/ec2-user/cicd"
+    - name: Execute deploy script
+      uses: appleboy/ssh-action@master
+      with:
+          username: ec2-user
+          host: ${{ secrets.HOST }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          script_stop: true
+          script: |
+            chmod +x /home/ec2-user/cicd/deploy.sh
+            sh /home/ec2-user/cicd/deploy.sh
