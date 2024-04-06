@@ -30,6 +30,7 @@ public class BoardController {
     public String list(Model model, @RequestParam(value="page", defaultValue="0") int page) {
         Page<Board> paging = boardService.getList(page);
         model.addAttribute("allBoardList", paging);
+        123
         return "list";
     }
 
