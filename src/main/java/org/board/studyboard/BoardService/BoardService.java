@@ -55,4 +55,11 @@ public class BoardService {
     public Board getBoardOne(Long no) {
         return boardRepository.findByNo(no);
     }
+
+    @Transactional
+    public Long updateBoard(Long no, BoardDTO params) {
+        Board board = boardRepository.findByNo(no);
+        board.update(params.getTitle(),params.getContents());
+        return no;
+    }
 }

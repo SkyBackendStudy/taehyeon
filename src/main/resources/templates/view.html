@@ -7,7 +7,7 @@
 </head>
 <body>
     <div>
-        <form style="width: 1000px; margin: auto">
+        <form style="width: 1000px; margin: auto" method="post" th:action="@{'/list/view/'+ ${boardOne.no}}">
             <h3>글 작성</h3>
             <div class="input-group mb-2">
                 <span class="input-group-text" id="board-title">글 제목</span>
@@ -20,7 +20,7 @@
             <div style="float: right">
                 <button type="submit" class="btn btn-primary" style="width: 80px">수정</button>
                 <button type="submit" class="btn btn-primary" style="width: 80px">삭제</button>
-                <button type="button" class="btn btn-secondary" style="width: 80px" onclick=location.href='/list'>취소</button>
+                <button type="button" class="btn btn-secondary" style="width: 80px" onclick=location.href='/list'>확인</button>
             </div>
         </form>
     </div>

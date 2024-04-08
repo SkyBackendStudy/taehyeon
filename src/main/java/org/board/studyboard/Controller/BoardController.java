@@ -6,10 +6,7 @@ import org.board.studyboard.BoardService.BoardService;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class BoardController {
@@ -57,10 +54,16 @@ public class BoardController {
         return "list";
     }
 
-    @GetMapping("/list/view")
-    public String updateView(Model model) {
-        model.addAttribute("boardOne",boardService.getBoardOne(1L));
+    @GetMapping("/list/view/{no}")
+    public String updateView(Model model, @PathVariable(value="no") Long no) {
+        model.addAttribute("boardOne",boardService.getBoardOne(no));
         return "view";
+    }
+
+    @PostMapping("/list/view/{no}")
+    public String save(@PathVariable(value="no") Long no, BoardDTO params) {
+        boardService.updateBoard(no,params);
+        return "redirect:/list/view/{no}";
     }
 
 //    @GetMapping("/list/view")
