@@ -11,7 +11,7 @@ public class BoardDTO {
     private String title;
     private String contents;
     private Long view;
-    private boolean deleteYn;
+    private String deleteYn;
 
     public Board toEntity(){
         return Board.builder()
@@ -26,6 +26,6 @@ public class BoardDTO {
         this.title = title;
         this.contents = contents;
         this.view = 0L;
-        this.deleteYn = false;
+        this.deleteYn = "0";
     }
 }

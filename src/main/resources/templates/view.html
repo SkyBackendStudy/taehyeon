@@ -18,11 +18,15 @@
                 <textarea type="text" class="form-control" name="contents" placeholder="글 내용" aria-label="text" aria-describedby="board-text" style="height: 300px" th:text="${boardOne.contents}"></textarea>
             </div>
             <div style="float: right">
-                <button type="submit" class="btn btn-primary" style="width: 80px">수정</button>
-                <button type="submit" class="btn btn-primary" style="width: 80px">삭제</button>
+                <button type="submit" class="btn btn-primary" style="width: 80px" >수정</button>
                 <button type="button" class="btn btn-secondary" style="width: 80px" onclick=location.href='/list'>확인</button>
             </div>
         </form>
+        <div style="float: right">
+            <form method="post" th:action="@{'/list/delete/'+ ${boardOne.no}}">
+                <button type="submit" class="btn btn-secondary" style="width: 80px" >삭제</button>
+            </form>
+        </div>
     </div>
 </body>
 <script>

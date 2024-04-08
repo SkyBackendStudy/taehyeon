@@ -28,7 +28,7 @@ public class Board {
     private Long view;
 
     @Column(name = "DELETE_YN")
-    private boolean deleteYn;
+    private String deleteYn;
 
 
     public Board update(String title, String contents) {
@@ -37,7 +37,7 @@ public class Board {
         return this;
     }
 
-    public Board delete(boolean deleteYn) {
+    public Board delete(String deleteYn) {
         this.deleteYn = deleteYn;
         return this;
     }
@@ -48,6 +48,6 @@ public class Board {
         this.title = title;
         this.contents = contents;
         this.view = 0L;
-        this.deleteYn = false;
+        this.deleteYn = "0";
     }
 }

@@ -66,6 +66,12 @@ public class BoardController {
         return "redirect:/list/view/{no}";
     }
 
+    @PostMapping("/list/delete/{no}")
+    public String deleteBoard(@PathVariable(value = "no") Long no) {
+        System.out.println("BoardController.deleteBoard");
+        boardService.deleteBoard(no);
+        return "redirect:/list";
+    }
 //    @GetMapping("/list/view")
 //    public String updateView() {
 //        return "view";

@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,7 +41,7 @@ public class BoardService {
         List<Sort.Order> sorts = new ArrayList<>();
         sorts.add(Sort.Order.asc("no"));
         Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
-        return boardRepository.findAllByDeleteYn(pageable,false);
+        return boardRepository.findAllByDeleteYn(pageable,"0");
     }
 
     @Transactional
@@ -48,7 +49,7 @@ public class BoardService {
         List<Sort.Order> sorts = new ArrayList<>();
         sorts.add(Sort.Order.asc("no"));
         Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
-        return boardRepository.findByContentsContainingAndDeleteYn(pageable,contents,false);
+        return boardRepository.findByContentsContainingAndDeleteYn(pageable,contents,"0");
     }
 
     @Transactional
@@ -57,9 +58,14 @@ public class BoardService {
     }
 
     @Transactional
-    public Long updateBoard(Long no, BoardDTO params) {
+    public void updateBoard(Long no, BoardDTO params) {
         Board board = boardRepository.findByNo(no);
         board.update(params.getTitle(),params.getContents());
-        return no;
+    }
+
+    @Transactional
+    public void deleteBoard(Long no) {
+        Board board = boardRepository.findByNo(no);
+        board.delete("1");
     }
 }
