@@ -40,7 +40,7 @@ jobs:
     - name: Docker build
       run: |
           docker login -u ${{ secrets.DOCKER_ID }} -p ${{ secrets.DOCKER_PWD }}
-          docker build -t thio123/studyboard1 .
+          docker build -t thio123/studyboard1 -f board.dockerfile .
           docker push thio123/studyboard1
           
     - name: Deploy
